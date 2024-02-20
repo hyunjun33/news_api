@@ -5,6 +5,7 @@ let news = [];
 const getNews = async () => {
     let url = new URL(`http://times-node-env.eba-appvq3ef.ap-northeast-2.elasticbeanstalk.com/top-headlines?q=아이유`);
     let response = await fetch(url);
+    console.log(response);
     let data = await response.json();
     news = data.articles;
 
