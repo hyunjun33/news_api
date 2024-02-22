@@ -2,13 +2,15 @@
 const API_KEY = `84b8c0ef44af454f9c4a4135a5cc3ab9`;
 let newsList = [];
 
+
+
 const menus = document.querySelectorAll(".menus button");
 menus.forEach(menu => menu.addEventListener("click", (event) => getNewsByCategory(event)))
 
 
 const getNews = async () => {
     // const url = new URL(`https://newsapi.org/v2/top-headlines?country=kr&apiKey=${API_KEY}`)
-    const url = new URL(`https://cheery-centaur-e0cea7.netlify.app/top-headlines?q=아이유&country=kr&apiKey=${API_KEY}`);
+    const url = new URL(`https://cheery-centaur-e0cea7.netlify.app/top-headlines?country=kr&apiKey=${API_KEY}`);
     let response = await fetch(url);
     console.log(response);
     
@@ -18,6 +20,7 @@ const getNews = async () => {
 
     render();
 };
+
 
 const getNewsByCategory = async (event) => {
     const category = event.target.textContent.toLowerCase();
@@ -77,6 +80,8 @@ const closeNav = () => {
 
 const openSearchBox = () => {
     let inputArea = document.getElementById("input-area");
+    console.log(inputArea.style.display)
+
     if (inputArea.style.display === "inline") {
         inputArea.style.display = "none";
     }
