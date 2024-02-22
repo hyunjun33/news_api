@@ -80,7 +80,7 @@ const closeNav = () => {
 
 const openSearchBox = () => {
     let inputArea = document.getElementById("input-area");
-    console.log(inputArea.style.display)
+    console.log(inputArea.style.display);
 
     if (inputArea.style.display === "inline") {
         inputArea.style.display = "none";

@@ -78,13 +78,17 @@
     border-radius: 3px;
   }
 
-.main {
+.head-line-section {
     padding: 1rem;
     display: flex;
     justify-content: left;
 }
 
 .menu-icon {
+    padding: 0.5rem;
+}
+
+.head-line-section {
     padding: 0.5rem;
 }
 
