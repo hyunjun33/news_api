@@ -1,17 +1,21 @@
 
 const API_KEY = `84b8c0ef44af454f9c4a4135a5cc3ab9`;
+// let url = new URL(`https://newsapi.org/v2/top-headlines?country=kr&apiKey=${API_KEY}`);
+let url = new URL(`https://cheery-centaur-e0cea7.netlify.app/top-headlines?country=kr&apiKey=${API_KEY}`);
+
+
 let newsList = [];
-
-
-
+let searchInput = document.getElementById("search-input")
 const menus = document.querySelectorAll(".menus button");
-menus.forEach(menu => menu.addEventListener("click", (event) => getNewsByCategory(event)))
+const sideMenus = document.querySelectorAll(".side-menu-list button")
+
+
+menus.forEach(menu => menu.addEventListener("click", (event) => getNewsByCategory(event)));
+sideMenus.forEach(menu => menu.addEventListener("click", (event) => getNewsByCategory(event)));
 
 
 const getNews = async () => {
-    // const url = new URL(`https://newsapi.org/v2/top-headlines?country=kr&apiKey=${API_KEY}`)
-    const url = new URL(`https://cheery-centaur-e0cea7.netlify.app/top-headlines?country=kr&apiKey=${API_KEY}`);
-    let response = await fetch(url);
+    const response = await fetch(url);
     console.log(response);
     
     const data = await response.json();
@@ -24,18 +28,22 @@ const getNews = async () => {
 
 const getNewsByCategory = async (event) => {
     const category = event.target.textContent.toLowerCase();
-    // const url = new URL(`https://newsapi.org/v2/top-headlines?country=kr&category=${category}&apiKey=${API_KEY}`);
-    const url = new URL(`https://cheery-centaur-e0cea7.netlify.app/top-headlines?country=kr&category=${category}&apiKey=${API_KEY}`);
-    
-    const response = await fetch(url);
-    console.log(response);
-    const data = await response.json();
-    
-    newsList = data.articles;
-    console.log("data:", newsList);
+    // url = new URL(`https://newsapi.org/v2/top-headlines?country=kr&category=${category}&apiKey=${API_KEY}`);
+    url = new URL(`https://cheery-centaur-e0cea7.netlify.app/top-headlines?country=kr&category=${category}&apiKey=${API_KEY}`);
 
-    render();
+    getNews();
 };
+
+
+const getNewsByKeyword = async () => {
+    const keyword = searchInput.value.toLowerCase();
+    // url = new URL(`https://newsapi.org/v2/top-headlines?country=kr&q=${keyword}&apiKey=${API_KEY}`);
+    url = new URL(`https://cheery-centaur-e0cea7.netlify.app/top-headlines?country=kr&q=${keyword}&apiKey=${API_KEY}`);
+
+    getNews();
+};
+
+
 
 const render = () => {
     const newsHtml = newsList.map((news) => 
@@ -64,8 +72,6 @@ const render = () => {
     `
     ).join("");
     
-
-
     document.getElementById("news-board").innerHTML = newsHtml;
 };
 
@@ -91,3 +97,7 @@ const openSearchBox = () => {
 };
 
 getNews();
+
+// 1. 버튼들에 클릭 이벤트를 추가한다
+// 2. 카테고리별로 뉴스를 가져온다
+// 3. 카테고리별로 가져온 뉴스를 보여준다
