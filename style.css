@@ -101,6 +101,11 @@
     padding: 0.5rem;
 }
 
+.alert-warning {
+    margin: 1rem;
+    text-align: center;
+}
+
 
 @media only screen and (max-width: 760px) {
     .menus {
