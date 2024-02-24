@@ -155,8 +155,8 @@ const paginationRender = () => {
     
     paginationHtml += 
     `
-        <li class="page-item">
-            <a class="page-link" onclick="moveToPage(${prevPage})"><</a>
+        <li class="page-item" onclick="moveToPage(${prevPage})">
+            <a class="page-link"><</a>
         </li>    
     `
 
@@ -164,16 +164,16 @@ const paginationRender = () => {
     for (let i = firstPageNumber; i <= lastPageNumber; i++) {
         paginationHtml += 
         `
-            <li class="page-item ${i===currentPage?'active':''}">
-                <a class="page-link" onclick="moveToPage(${i})">${i}</a>
+            <li class="page-item ${i===currentPage?'active':''}" onclick="moveToPage(${i})">
+                <a class="page-link">${i}</a>
             </li>
         `
     };
 
     paginationHtml += 
     `
-        <li class="page-item">
-            <a class="page-link" onclick="moveToPage(${nextPage})">></a>
+        <li class="page-item" onclick="moveToPage(${nextPage})">
+            <a class="page-link">></a>
         </li>    
     `   
 
