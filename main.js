@@ -1,7 +1,8 @@
-
+import config from "./apikey.js"
 
 // URL 및 API_KEY 정보
-const API_KEY = `84b8c0ef44af454f9c4a4135a5cc3ab9`;
+const API_KEY = config.API_KEY;
+console.log(API_KEY);
 // let url = new URL(`https://newsapi.org/v2/top-headlines?country=kr&apiKey=${API_KEY}`); // News API
 let url = new URL(`https://cheery-centaur-e0cea7.netlify.app/top-headlines?country=kr&apiKey=${API_KEY}`); // 누나 API
 
