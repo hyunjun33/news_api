@@ -89,6 +89,8 @@
 }
 
 .head-line-section {
+    display: flex;
+    justify-content: left;
     padding: 0.5rem;
 }
 

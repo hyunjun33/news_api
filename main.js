@@ -1,7 +1,7 @@
-import config from "./apikey.js"
+// import config from "./apikey.js"
 
 // URL 및 API_KEY 정보
-const API_KEY = config.API_KEY;
+const API_KEY = `84b8c0ef44af454f9c4a4135a5cc3ab9`;
 // let url = new URL(`https://newsapi.org/v2/top-headlines?country=kr&apiKey=${API_KEY}`); // News API
 let url = new URL(`https://cheery-centaur-e0cea7.netlify.app/top-headlines?country=kr&apiKey=${API_KEY}`); // 누나 API
 
@@ -9,13 +9,14 @@ let url = new URL(`https://cheery-centaur-e0cea7.netlify.app/top-headlines?count
 let newsList = [];
 let searchInput = document.getElementById("search-input")
 const menus = document.querySelectorAll(".menus button");
-const sideMenus = document.querySelectorAll(".side-menu-list button")
-
+const sideMenus = document.querySelectorAll(".side-menu-list button");
+const menuIcon = document.getElementsByClassName("menu-icon")[0];
 
 
 // 카테고리 별 생성한 버튼에 클릭 이벤트 추가
 menus.forEach(menu => menu.addEventListener("click", (event) => getNewsByCategory(event)));
 sideMenus.forEach(menu => menu.addEventListener("click", (event) => getNewsByCategory(event)));
+
 
 
 // 페이지네이션 구현을 위한 변수 선언
@@ -178,7 +179,7 @@ const moveToPage = (pageNumber) => {
     console.log("pageNumber:", pageNumber);
     currentPage = pageNumber
     getNews();
-}
+};
 
 const openNav = () => {
     document.getElementById("mySidenav").style.width = "250px";
