@@ -2,8 +2,8 @@
 
 // URL 및 API_KEY 정보
 const API_KEY = `84b8c0ef44af454f9c4a4135a5cc3ab9`;
-let url = new URL(`https://newsapi.org/v2/top-headlines?country=kr&apiKey=${API_KEY}`); // News API
-// let url = new URL(`https://cheery-centaur-e0cea7.netlify.app/top-headlines?country=kr&apiKey=${API_KEY}`); // 누나 API
+// let url = new URL(`https://newsapi.org/v2/top-headlines?country=kr&apiKey=${API_KEY}`); // News API
+let url = new URL(`https://cheery-centaur-e0cea7.netlify.app/top-headlines?country=kr&apiKey=${API_KEY}`); // 누나 API
 
 
 let newsList = [];
@@ -59,8 +59,8 @@ const getNews = async () => {
 
 const getNewsByCategory = async (event) => {
     const category = event.target.textContent.toLowerCase();
-    url = new URL(`https://newsapi.org/v2/top-headlines?country=kr&category=${category}&apiKey=${API_KEY}`); // News API
-    // url = new URL(`https://cheery-centaur-e0cea7.netlify.app/top-headlines?country=kr&category=${category}&apiKey=${API_KEY}`); // 누나 API (과제 제출용)
+    // url = new URL(`https://newsapi.org/v2/top-headlines?country=kr&category=${category}&apiKey=${API_KEY}`); // News API
+    url = new URL(`https://cheery-centaur-e0cea7.netlify.app/top-headlines?country=kr&category=${category}&apiKey=${API_KEY}`); // 누나 API (과제 제출용)
 
     getNews();
 };
@@ -68,8 +68,8 @@ const getNewsByCategory = async (event) => {
 
 const getNewsByKeyword = async () => {
     const keyword = searchInput.value.toLowerCase();
-    url = new URL(`https://newsapi.org/v2/top-headlines?country=kr&q=${keyword}&apiKey=${API_KEY}`); // News API
-    // url = new URL(`https://cheery-centaur-e0cea7.netlify.app/top-headlines?country=kr&q=${keyword}&apiKey=${API_KEY}`); // 누나 API (과제 제출용)
+    // url = new URL(`https://newsapi.org/v2/top-headlines?country=kr&q=${keyword}&apiKey=${API_KEY}`); // News API
+    url = new URL(`https://cheery-centaur-e0cea7.netlify.app/top-headlines?country=kr&q=${keyword}&apiKey=${API_KEY}`); // 누나 API (과제 제출용)
 
     getNews();
 };
