@@ -10,13 +10,20 @@ let newsList = [];
 let searchInput = document.getElementById("search-input")
 const menus = document.querySelectorAll(".menus button");
 const sideMenus = document.querySelectorAll(".side-menu-list button");
-const menuIcon = document.getElementsByClassName("menu-icon")[0];
+let menuIcon = document.getElementsByClassName("fas fa-bars hide icon-button")[0];
+let searchIcon = document.getElementsByClassName("fas fa-search icon-button")[0];
+let searchButton = document.getElementsByClassName("search-button")[0];
+let closeButton = document.getElementsByClassName("close-btn")[0];
 
 
-// 카테고리 별 생성한 버튼에 클릭 이벤트 추가
+
+// 버튼 별로 클릭 이벤트 추가
 menus.forEach(menu => menu.addEventListener("click", (event) => getNewsByCategory(event)));
 sideMenus.forEach(menu => menu.addEventListener("click", (event) => getNewsByCategory(event)));
-
+menuIcon.addEventListener("click", openNav);
+searchIcon.addEventListener("click", openSearchBox);
+searchButton.addEventListener("click", getNewsByKeyword);
+closeButton.addEventListener("click", closeNav);
 
 
 // 페이지네이션 구현을 위한 변수 선언
@@ -67,7 +74,7 @@ const getNewsByCategory = async (event) => {
 };
 
 
-const getNewsByKeyword = async () => {
+async function getNewsByKeyword() {
     const keyword = searchInput.value.toLowerCase();
     // url = new URL(`https://newsapi.org/v2/top-headlines?country=kr&q=${keyword}&apiKey=${API_KEY}`); // News API
     url = new URL(`https://cheery-centaur-e0cea7.netlify.app/top-headlines?country=kr&q=${keyword}&apiKey=${API_KEY}`); // 누나 API (과제 제출용)
@@ -181,15 +188,15 @@ const moveToPage = (pageNumber) => {
     getNews();
 };
 
-const openNav = () => {
+function openNav() {
     document.getElementById("mySidenav").style.width = "250px";
 };
   
-const closeNav = () => {
+function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
 };
 
-const openSearchBox = () => {
+function openSearchBox() {
     let inputArea = document.getElementById("input-area");
     console.log(inputArea.style.display);
 
