@@ -10,8 +10,8 @@ let newsList = [];
 let searchInput = document.getElementById("search-input")
 const menus = document.querySelectorAll(".menus button");
 const sideMenus = document.querySelectorAll(".side-menu-list button");
-let menuIcon = document.getElementsByClassName("fas fa-bars hide icon-button")[0];
-let searchIcon = document.getElementsByClassName("fas fa-search icon-button")[0];
+let menuIcon = document.getElementsByClassName("menu-icon")[0];
+let searchIcon = document.getElementsByClassName("search-icon")[0];
 let searchButton = document.getElementsByClassName("search-button")[0];
 let closeButton = document.getElementsByClassName("close-btn")[0];
 
@@ -55,20 +55,21 @@ const getNews = async () => {
         else {
             throw new Error(data.message)
         };
-
     }
-
     catch(error) {
         errorRender(error.message);
     };
-    
 };
 
 
 const getNewsByCategory = async (event) => {
     const category = event.target.textContent.toLowerCase();
+    currentPage = 1;
+
     // url = new URL(`https://newsapi.org/v2/top-headlines?country=kr&category=${category}&apiKey=${API_KEY}`); // News API
     url = new URL(`https://cheery-centaur-e0cea7.netlify.app/top-headlines?country=kr&category=${category}&apiKey=${API_KEY}`); // 누나 API (과제 제출용)
+    
+    
 
     getNews();
 };
@@ -152,6 +153,16 @@ const paginationRender = () => {
     };
 
     let paginationHtml = ``;
+
+    if (pageGroupNumber !== 1) {
+        paginationHtml += 
+        `
+            <li class="page-item" onclick="moveToPage(${1})">
+                <a class="page-link"><<</a>
+            </li>       
+        ` 
+    };
+ 
     
     paginationHtml += 
     `
@@ -176,6 +187,16 @@ const paginationRender = () => {
             <a class="page-link">></a>
         </li>    
     `   
+
+    if (pageGroupNumber !== Math.ceil(totalPageNumber / groupSize)) {
+        paginationHtml += 
+        `
+            <li class="page-item" onclick="moveToPage(${totalPageNumber})">
+                <a class="page-link">>></a>
+            </li>       
+        `
+    };
+
 
 
     document.querySelector(".pagination").innerHTML = paginationHtml
